@@ -1,0 +1,27 @@
+
+// Main Container CARD
+.best-product-cards-main-container{
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+// Image of product
+.best-seller-product-cards-img{
+    // display: block;
+    max-width: 100%;
+    width: 260px;
+}
+
+
+// Product tittle
+.best-seller-product-cards-title{
+    font-weight: 500;
+    font-size: 18px;
+}
+
+

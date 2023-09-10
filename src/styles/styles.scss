@@ -1,0 +1,23 @@
+
+// Fonts
+// Roboto Font
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap');
+
+
+// Variables
+
+// Components
+@import './components/navbar.scss';
+@import './components/signin.scss';
+@import './components/oneProduct.scss';
+@import './components/bestSelling.scss';
+@import './components/bestSellingProductsCards.scss';
+@import './components/signup.scss';
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+

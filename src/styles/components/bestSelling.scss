@@ -1,0 +1,29 @@
+
+// Main Container
+.best-selling-main-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    text-align: center;
+    gap: 40px;
+}
+
+.best-selling-container-h1{
+    letter-spacing: 2px;
+}
+
+// Main container Cards
+.best-selling-container-selling-products{
+    display: grid;
+    grid-template-columns: repeat(4, 260px) auto;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 55px;
+}
+
+
+
+

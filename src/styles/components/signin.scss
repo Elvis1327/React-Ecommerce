@@ -1,0 +1,112 @@
+
+// Main Container
+.signin-main-container{
+    width: 100%;
+    padding: 25px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+// Form Cart
+.signin-card-login{
+    width: 400px;
+    padding: 25px;
+}
+
+// Form h1
+.signin-card-h1{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+form{
+    width: 100%;
+}
+
+// Inputs Containers
+.signin-card-form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+// Input container span
+.signin-card-form-label{
+    font-weight: 500;
+    font-size: 15px;
+}
+
+// Input container input
+.signin-card-form-input{
+    margin-bottom: 12px;
+    width: 100%;
+    font-size: 14px;
+    border: 1px solid rgba(128, 128, 128, 0.249);
+    padding: 8px;
+}
+
+// Input when selected
+.signin-card-form-input:focus{
+    outline: 1px solid rgba(128, 128, 128, 0.356);
+}
+
+// Submit Button
+.signin-card-form-button{
+    width: 30%;
+    padding: 6px;
+    border-radius: 4px;
+    border: none;
+    background-color: #455076;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+// Button container
+.signin-card-form-ways{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 10px;
+}
+// Redirect to Register
+.signin-card-form-redirect-register span{
+    font-size: 14px;
+}
+// Link to redirect to register
+.signin-card-form-redirect-link{
+    text-decoration: none;
+    color: #455076;
+    text-align: center;
+}
+
+// SIGN IN WITH Google
+
+// Google popout Container
+.signin-card-form-google-popout{
+    border: 1px solid rgba(128, 128, 128, 0.249);
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    column-gap: 30px;
+    padding: 7px;
+    cursor: pointer;
+}
+
+// Google popout Button
+.signin-card-form-google-button{
+    background-color: transparent;
+    border: none;
+    font-weight: 500px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
