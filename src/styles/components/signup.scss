@@ -46,6 +46,15 @@ form{
     font-size: 14px;
     border: 1px solid rgba(128, 128, 128, 0.249);
 }
+
+// Input Error
+.signup-card-form-input-error{
+    position: relative;
+    top: -10px;
+    font-size: 14px;
+    color: red;
+    font-weight: bold;
+}
 // Input focus
 .signup-card-form-input:focus{
     outline: 1px solid rgba(128, 128, 128, 0.356);

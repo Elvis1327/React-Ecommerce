@@ -7,14 +7,15 @@ import { getAllProductsFetch, getOneSingleProdcut } from '../utils/fetchProducts
 // Initial State
 const initialState: ProductsSliceInterface = {
      singleProduct: {},
-     allProducts: []
+     allProducts: [],
 };
 
 // Reducer
 const productsSlice = createSlice({
     name: "productsSlice",
     initialState,
-    reducers: {},
+    reducers: {
+    },
     extraReducers: (builder) => {
         
         // One single Product
@@ -45,6 +46,7 @@ export const getAllProducts = createAsyncThunk(
         return allProducts;
     }
 )
+
 
 export default productsSlice.reducer;
 

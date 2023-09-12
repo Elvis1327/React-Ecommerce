@@ -1,0 +1,5 @@
+
+
+interface authSliceInterface {
+    user: boolean;
+}

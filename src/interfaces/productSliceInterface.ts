@@ -3,6 +3,7 @@
 export interface ProductsSliceInterface  {
     singleProduct: Product;
     allProducts: Product[]
+    user: any;
 };
 
 export interface Product  {

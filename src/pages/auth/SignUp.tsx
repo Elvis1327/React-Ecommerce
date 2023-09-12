@@ -2,39 +2,35 @@ import React, { ChangeEvent, useState } from 'react';
 import { BsArrowRightShort } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { auth } from '../../firebase/config';
 
 import googleImage from '../../../public/googlepng.png';
 
+const formSchema = z
+.object({
+    name: z.string().min(1, 'Name is required')
+            .max(50, "The name can have at most 50 charcters"),
+    email: z.string().min(1, 'Email is required')
+    .email('The Email should be Valid')
+    .min(8, "Email needs to have 8 or more characters")
+    .max(100, "Email can not pass 100 characters"),
+    // Password
+    password: z.string().min(1, 'Password is required')
+    .min(8, "Password must have 8 or more characters") 
+});
+type SignUpSchemaType = z.infer<typeof formSchema>;
+
 export const SignUp = () => {
 
-    const [ formDataValues, setFormDataValues ] = useState({
-        email: "", password: ''
-    });
-    const { email, password } = formDataValues;
-    // Handle InputS Change
-    const handleInputChange = (e:ChangeEvent<HTMLInputElement> ) => {
-        setFormDataValues({
-            ...formDataValues,
-            [e.target.name]: e.target.value
-        });
-    };
+    // Handle Form
+    const { register, handleSubmit, formState: {errors} } = useForm<SignUpSchemaType>({resolver: zodResolver(formSchema)});
 
-
-    // HandleForm
-    const handleOnSubmit = async (e: any) => {
-        e.preventDefault();
-
-        // Handle create acount with firebase
-        try{
-
-            const newUser = await createUserWithEmailAndPassword(auth, email, password);
-            console.log("register", newUser.user)
-
-        }catch(err){
-            console.log(err)
-        }
+    const onSubmit: SubmitHandler<SignUpSchemaType> = async (data) => {
+        const user = await createUserWithEmailAndPassword(auth, data.email, data.password)
 
     }
 
@@ -44,35 +40,40 @@ export const SignUp = () => {
                 <h1 className="signup-card-h1">
                     Register
                 </h1>
-                <form onSubmit={handleOnSubmit}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="signup-card-form-container">
                         <span className="signup-card-form-label">Name</span>
                         <input 
                             type="text" 
-                            name='name'
                             className='signup-card-form-input'
-                            onChange={(e) => handleInputChange(e)}
+                            {...register('name')}
                         />
+                        {/* Error Message */}
+                        {errors.name && 
+                            <span className='signup-card-form-input-error'>{errors.name.message}</span> 
+                        }
                     </div>
                     <div className="signup-card-form-container">
                         <span className="signup-card-form-label">Email</span>
                         <input 
                             type="text" 
-                            name='email'
                             className='signup-card-form-input'
-                            value={email}
-                            onChange={(e) => handleInputChange(e)}
+                            {...register('email')}
                         />
+                        {errors.name && 
+                            <span className='signup-card-form-input-error'>{errors.email?.message}</span> 
+                        }
                     </div>
                     <div className="signup-card-form-container">
                         <span className="signup-card-form-label">Password</span>
                         <input 
-                            type="text" 
-                            name='password'
+                            type="password"
                             className='signup-card-form-input'
-                            value={password}
-                            onChange={(e) => handleInputChange(e)}
+                            {...register('password')}
                         />
+                        {errors.name && 
+                            <span className='signup-card-form-input-error'>{errors.password?.message}</span> 
+                        }
                     </div>
                     <div className="signup-card-form-ways">
                         <button className="signup-card-form-button">

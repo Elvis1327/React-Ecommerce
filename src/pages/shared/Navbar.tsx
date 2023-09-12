@@ -2,15 +2,27 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineUser } from 'react-icons/ai'
 import { BsBag } from 'react-icons/bs';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { signOut } from 'firebase/auth'; 
 import { auth } from '../../firebase/config';
+import { AppDispatch } from '../../store/store';
+import { RootReducer } from '../../interfaces/reducersInterface';
+
+
 
 export const Navbar = () => {
 
+    const dispatch = useDispatch<AppDispatch>();
+    const { user } = useSelector((state: RootReducer) => state.auth);
+    const navigate = useNavigate();
+
     const handleLogOUt = async () => {
         let userOut = await signOut(auth);
-    }
+        navigate('/signin')
+    };
+
 
     return(
         <div className="navbar-main-container">
@@ -31,22 +43,10 @@ export const Navbar = () => {
                         <BsBag style={{fontSize: "22px"}} />
                     </Link>
                 </div>
+                { user === true && <button className="isUserInButton" onClick={handleLogOUt}>Logout</button> }
             </div>
         
-            <button
-                style={{
-                    position: "relative",
-                    top: 0,
-                    left: 0,
-                    padding: "20px",
-                    fontSize: "25px"
-                }}
-                onClick={handleLogOUt}
-            >
-
-                LOGOUT
-
-            </button>
+            
 
         </div>
     );

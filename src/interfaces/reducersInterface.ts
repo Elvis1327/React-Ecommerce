@@ -2,7 +2,7 @@ import { ProductsSliceInterface } from "./productSliceInterface";
 
 
 export interface RootReducer {
-    auth: any;
+    auth: authSliceInterface;
     products: ProductsSliceInterface;
 };
 

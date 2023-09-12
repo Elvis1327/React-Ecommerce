@@ -46,6 +46,15 @@ form{
     padding: 8px;
 }
 
+// Input container input error
+.signin-card-form-input-error{
+    position: relative;
+    top: -10px;
+    font-size: 14px;
+    color: red;
+    font-weight: bold;
+}
+
 // Input when selected
 .signin-card-form-input:focus{
     outline: 1px solid rgba(128, 128, 128, 0.356);
@@ -102,6 +111,8 @@ form{
     font-size: 14px;
     cursor: pointer;
 }
+
+
 
 
 

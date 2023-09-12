@@ -1,49 +1,36 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React from 'react';
 import { getAuth, signInWithEmailAndPassword} from "firebase/auth";
 import { BsArrowRightShort } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { auth } from '../../firebase/config';
 import googleImage from '../../../public/googlepng.png';
 
+
+
+const formSchema = z
+.object({
+    email: z.string().min(1, 'Email is required')
+    .email('The Email should be Valid')
+    .min(8, "Email needs to have 8 or more characters")
+    .max(100, "Email can not pass 100 characters"),
+    // Password
+    password: z.string().min(1, 'Password is required')
+    .min(8, "Password must have 8 or more characters") 
+});
+type SignUpSchemaType = z.infer<typeof formSchema>;
+
 export const SignIn = () => {
 
-    // Form Values Input
-    const defaultFormData = {
-        email: "",
-        password: ""
-    };
-    const [ formData, setFormData ] = useState(defaultFormData);
-    const onChange = (e:ChangeEvent<HTMLInputElement>) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
-    };
-    const { email, password } = formData;
-    
-    // Hnadle Form
-    const handleSignInSubmit = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        try{
-            const user = await signInWithEmailAndPassword(auth, email, password);
-            console.log(user.user)
-        }
-        catch(err){
-            console.log(err)
-        }
-    };
+    const { register, handleSubmit, formState: {errors} } = useForm<SignUpSchemaType>({resolver: zodResolver(formSchema)});
 
-    // Handle Google Popout
-    // const handleSignInWithGooglePopout = async () => {
-    //     try{
-    //         const user = await getRedirectResult(auth);
-    //         console.log(user)
-    //     }
-    //     catch(err){
-    //         console.log(err)
-    //     }
-    // }
+    // handle Form
+    const onSubmit:SubmitHandler<SignUpSchemaType> = async (data) => {
+        const user = await signInWithEmailAndPassword(auth, data.email, data.password);
+    }
 
 
     return(
@@ -52,26 +39,31 @@ export const SignIn = () => {
                 <h1 className='signin-card-h1'>
                     Login
                 </h1>
-                <form onSubmit={handleSignInSubmit}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="signin-card-form-container">
                         <span className="signin-card-form-label">Email</span>
                         <input 
-                            name='email'
+                            {...register('email')}
                             type="text"
                             className='signin-card-form-input'
-                            onChange={(e) => onChange(e)}
-                            value={formData.email}
                         />
+                        {/* Error Message */}
+                        {errors.email && 
+                            <span className='signin-card-form-input-error'>{errors.email.message}</span> 
+                        }
                     </div>
                     <div className="signin-card-form-container">
                         <span className="signin-card-form-label">Password</span>
                         <input 
-                            name='password'
+                            {...register('password')}
                             type="password"
                             className='signin-card-form-input'
-                            onChange={(e) => onChange(e)}
-                            value={password}
                         />
+                        {/* Error Message */}
+                        {errors.password && 
+                            <span className='signin-card-form-input-error'>{errors.password.message}</span> 
+                        }
+                        
                     </div>
                     <div className="signin-card-form-ways">
                         <button className="signin-card-form-button">
