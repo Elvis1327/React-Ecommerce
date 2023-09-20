@@ -1,7 +1,7 @@
 
 // Main Container CARD
 .best-product-cards-main-container{
-    width: 340px;
+    width: 260px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -15,13 +15,21 @@
     // display: block;
     max-width: 100%;
     width: 260px;
+    height: 289px;
 }
 
 
 // Product tittle
 .best-seller-product-cards-title{
-    font-weight: 500;
     font-size: 18px;
+    font-weight: bold;
 }
 
+// Mobile
+@media screen and (max-width: 800px){
+    .best-product-cards-main-container{
+        text-align: center;
+        display: flex;
+    }
+}
 

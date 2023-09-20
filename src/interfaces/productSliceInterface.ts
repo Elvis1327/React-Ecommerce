@@ -1,9 +1,11 @@
 
 // Products Interface
 export interface ProductsSliceInterface  {
-    singleProduct: Product;
-    allProducts: Product[]
-    user: any;
+    singleProduct: Product | any;
+    allProducts: Product[] | any[];
+    productById: Product | any;
+    productByIdLoading: Boolean;
+    cart: ProductCart[];
 };
 
 export interface Product  {
@@ -20,6 +22,16 @@ interface Rating {
     rate: number;
     count: number;
 };
+
+export type ProductCart = {
+    productId: number;
+    productTitle: string;
+    productPrice: number;
+    productImage: string;
+    productQuantity: number;
+}
+
+
 
 
 

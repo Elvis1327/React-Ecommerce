@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 import { AppDispatch } from '../../store/store';
-import { getAllProducts } from '../../features/productsSlice';
+import { getAllProducts } from '../../reducers/productsSlice';
 import { RootReducer } from '../../interfaces/reducersInterface';
 import { BestSellingProductsCards } from '../../components/products/BestSellingProductsCards';
 import { getBestSellerProducts } from '../../utils/fetchProducts';
@@ -13,13 +13,11 @@ export const BestSelling = () => {
     const dispatch = useDispatch<AppDispatch>();
     const { allProducts } = useSelector((state:RootReducer) => state.products);
 
-    
     useEffect(() =>{
         dispatch(getAllProducts())
     },[]);
 
     const bestSellerProducts = getBestSellerProducts(allProducts);
-    console.log(bestSellerProducts)
 
   return (
     <div className="best-selling-main-container">

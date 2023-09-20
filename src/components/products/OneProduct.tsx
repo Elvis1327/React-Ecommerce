@@ -1,7 +1,7 @@
 import React from 'react'
 import { Product } from '../../interfaces/productSliceInterface'
 
-export const OneProduct = ({category, description, image}: Product) => {
+export const OneProduct = () => {
   return (
     <div className="one-product-main-container-img-banner">
         <div className="one-product-main-container-container">

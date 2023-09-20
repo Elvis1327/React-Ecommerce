@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { oneSingleProduct } from '../../features/productsSlice';
+import { oneSingleProduct } from '../../reducers/productsSlice';
 import { AppDispatch } from '../../store/store';
 import { RootReducer } from '../../interfaces/reducersInterface';
 import { OneProduct } from '../../components/products/OneProduct';
@@ -19,7 +19,7 @@ export const Home = () => {
 
   return (
     <div className='home-main-container'>
-      <OneProduct {...singleProduct} />
+      <OneProduct />
       <BestSelling />
     </div>
   )

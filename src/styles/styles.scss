@@ -1,10 +1,8 @@
 
-// Fonts
 // Roboto Font
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap');
-
-
-// Variables
+// Poppins Font
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@300;700&display=swap');
 
 // Components
 @import './components/navbar.scss';
@@ -13,6 +11,11 @@
 @import './components/bestSelling.scss';
 @import './components/bestSellingProductsCards.scss';
 @import './components/signup.scss';
+@import './components/allProducts.scss';
+@import './components/allProductsCards.scss';
+@import './components/productById.scss';
+@import "./components/productsCart.scss";
+@import './components//emptyCart.scss';
 
 *{
     padding: 0px;

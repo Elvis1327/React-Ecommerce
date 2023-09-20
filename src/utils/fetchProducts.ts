@@ -28,3 +28,9 @@ export const getBestSellerProducts = (data: Product[]) => {
     return bestRatingProducts.slice(0,4);
 };
 
+// Get Product By Id
+export const getProductByIdFetch = async (id: any) => {
+    const { data } = await fetchProducts(id)
+    return data;
+}
+

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 
 import { Navbar } from '../pages/shared/Navbar';
 import { Home } from '../pages/shared/Home';
@@ -10,9 +11,11 @@ import { SignUp } from '../pages/auth/SignUp';
 import { Cart } from '../pages/cart/Cart';
 import { auth } from '../firebase/config';
 import { AppDispatch } from '../store/store';
-import { RootReducer } from '../interfaces/reducersInterface';
 
-import { userIsActive } from '../features/authSlice';
+import { userIsActive } from '../reducers/authSlice';
+import { PrivateRoutes } from './PrivateRoutes';
+import { AllProducts } from '../pages/products/AllProducts';
+import { ProductsById } from '../pages/products/ProductsById';
 
 
 
@@ -20,10 +23,6 @@ import { userIsActive } from '../features/authSlice';
 export const RootRouter = () => {
 
     const dispatch = useDispatch<AppDispatch>();
-    const { user } = useSelector((state: RootReducer) => state.auth)
-    console.log(user)
-
-
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -40,11 +39,16 @@ export const RootRouter = () => {
         <BrowserRouter>
             <Navbar  />
             <Routes>
+                {/* <Route element={<PrivateRoutes />} >
+                </Route> */}
                 <Route path='/' element={<Home />} />
+                <Route path='/cart' element={<Cart />} />     
                 <Route path='/signin' element={<SignIn />} />
                 <Route path='/signup' element={<SignUp />} />
-                <Route path='/cart' element={<Cart />} /> 
+                <Route path='/best-selling' element={<AllProducts />} />
+                <Route path='/product/:id' element={<ProductsById />} />
             </Routes>
+            <ToastContainer />
         </BrowserRouter>
         </>
     )

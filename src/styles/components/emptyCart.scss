@@ -1,0 +1,50 @@
+
+
+// Main Container
+.empty-cart-main-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+    text-align: center;
+}
+
+// h1
+.empty-cart-info-tittle{
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin-bottom: 0px;
+    font-size: 25px;
+}
+
+// Image
+.empty-cart-info-img{
+    max-width: 100%;
+    width: 350px;
+}
+// Issue
+.empty-cart-info-issue{
+    font-size: 27px;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+// Button
+.empty-cart-info-button{
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: #B9D4DB;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+@media (max-width: 500px){
+    .empty-cart-main-container{
+        padding: 30px 30px;
+    }
+}

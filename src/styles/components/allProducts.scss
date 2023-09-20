@@ -1,0 +1,40 @@
+
+
+// MAIN CONTAINER
+.all-products-main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+// All Products Banner
+.all-products-main-container-banner{
+    position: relative;
+    background-image: url('../../../public/shop-banner.jpg');
+    height: 300px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+// h1 Banner
+.all-products-main-container-banner-h1{
+    position: absolute;
+    font-size: 43px;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// Main container all product cards
+.all-products-main-container-main-cards{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 60px;
+    column-gap: 20px;
+    row-gap: 70px;
+}
+
+
