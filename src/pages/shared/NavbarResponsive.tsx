@@ -7,8 +7,8 @@ import { BsBag } from 'react-icons/bs';
 import { RootReducer } from '../../interfaces/reducersInterface';
 import { AppDispatch } from '../../store/store';
 import { getAllProducts } from '../../reducers/productsSlice';
-import TShirt from '../../../public/tshirt.jpg'; 
-import Bag from '../../../public/bag.jpg'; 
+import TShirt from '../../assets/tshirt.jpg'; 
+import Bag from '../../assets/bag.jpg'; 
 
 export const NavbarResponsive = () => {
 

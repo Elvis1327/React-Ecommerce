@@ -1,5 +1,5 @@
 import React from 'react'
-import googleImage from '../../../public/googlepng.png';
+import googleImage from '../../assets/googlepng.png';
 
 export const GooglePopOut = () => {
   return (

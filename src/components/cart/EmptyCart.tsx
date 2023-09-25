@@ -1,5 +1,5 @@
 import React from 'react';
-import Cart from '../../../public/empty-cart.svg';
+import Cart from '../../assets/empty-cart.svg';
 import { useNavigate } from 'react-router-dom';
 
 

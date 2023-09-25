@@ -1,5 +1,4 @@
 import React from 'react'
-import { Product } from '../../interfaces/productSliceInterface'
 
 export const OneProduct = () => {
   return (
