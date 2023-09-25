@@ -45,7 +45,8 @@
 // Image
 .product-by-id-image{
     width: 500px;
-    height: 460px;
+    // height: 460px;
+    max-width: 100%;
 }
 
 // Info Container

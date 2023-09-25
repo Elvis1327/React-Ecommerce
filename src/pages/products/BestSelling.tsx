@@ -6,7 +6,7 @@ import { AppDispatch } from '../../store/store';
 import { getAllProducts } from '../../reducers/productsSlice';
 import { RootReducer } from '../../interfaces/reducersInterface';
 import { BestSellingProductsCards } from '../../components/products/BestSellingProductsCards';
-import { getBestSellerProducts } from '../../utils/fetchProducts';
+import { getBestSellerProducts } from '../../utils/utilities';
 
 export const BestSelling = () => {
 

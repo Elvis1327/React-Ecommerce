@@ -1,13 +1,13 @@
 import React from 'react';
-import { getAuth, signInWithEmailAndPassword} from "firebase/auth";
+import { signInWithEmailAndPassword} from "firebase/auth";
 import { BsArrowRightShort } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { auth } from '../../firebase/config';
-import googleImage from '../../../public/googlepng.png';
+import { GooglePopOut } from '../../components/auth/GooglePopOut';
 
 
 
@@ -25,13 +25,16 @@ type SignUpSchemaType = z.infer<typeof formSchema>;
 
 export const SignIn = () => {
 
+    const navigate = useNavigate();
+
     const { register, handleSubmit, formState: {errors} } = useForm<SignUpSchemaType>({resolver: zodResolver(formSchema)});
 
     // handle Form
     const onSubmit:SubmitHandler<SignUpSchemaType> = async (data) => {
         const user = await signInWithEmailAndPassword(auth, data.email, data.password);
+        navigate('/best-selling')
+    
     }
-
 
     return(
         <div className="signin-main-container">
@@ -76,16 +79,7 @@ export const SignIn = () => {
                             </span>
                         </div>
                     </div>
-                    <div className="signin-card-form-google-popout" >
-                        <img 
-                            src={googleImage} 
-                            alt="googleImage"
-                            style={{width: "20px"}}
-                        />
-                        <button className="signin-card-form-google-button">
-                            Sign In With Google
-                        </button>
-                    </div>
+                    <GooglePopOut />
                 </form>
             </div>
         </div>

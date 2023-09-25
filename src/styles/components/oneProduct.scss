@@ -2,6 +2,7 @@
 // This is the banner for the Product
 .one-product-main-container-img-banner{
     position: relative;
+    max-width: 100%;
     height: 700px;
     background-image: url('../../../public/hatbanner.jpg');
     background-size: cover;
@@ -12,6 +13,7 @@
 // Shadow of the Banner
 .one-product-main-container-img-banner::after{
     position: absolute;
+    max-width: 100%;
     content: "";
     height: 100%;
     width: 100%;

@@ -1,18 +1,12 @@
 import React from 'react';
-
-import { Product } from '../../interfaces/productSliceInterface'
 import { useNavigate } from 'react-router-dom';
+
+import { Product } from '../../interfaces/productSliceInterface';
+import { truncateString } from '../../utils/utilities';
 
 export const BestSellingProductsCards = ({title, image, price, id}: Product) => {
 
   const navigate = useNavigate();
-
-  let truncateString = (data: string) => {
-    if(data.length > 20){
-      return data.slice(0,20) + "...";
-    }
-    return data;
-  }
 
   let newString = truncateString(title!);
 

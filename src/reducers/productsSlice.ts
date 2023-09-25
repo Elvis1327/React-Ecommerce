@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import { ProductCart, ProductsSliceInterface } from '../interfaces/productSliceInterface';
-import { getAllProductsFetch, getOneSingleProdcut, getProductByIdFetch } from '../utils/fetchProducts';
+import { getAllProductsFetch, getProductByIdFetch } from '../utils/fetchProducts';
 
 
 // Initial State
@@ -95,11 +95,6 @@ const productsSlice = createSlice({
 
 
     extraReducers: (builder) => {
-        // One single Product
-        builder.addCase(oneSingleProduct.fulfilled, (state,action) => {
-            state.singleProduct = action.payload;
-        });
-
         // Get All Products
         builder.addCase(getAllProducts.fulfilled, (state, action) => {
             state.allProducts = action.payload;
@@ -122,14 +117,6 @@ const productsSlice = createSlice({
     }
 });
 
-// Get One Product
-export const oneSingleProduct = createAsyncThunk(
-    'Product/getOneSingleProduct',
-    async () => {
-        const oneProduct = await getOneSingleProdcut();
-        return oneProduct
-    }
-);
 // Get all Products
 export const getAllProducts = createAsyncThunk(
     'Product/getAllProducts',

@@ -1,0 +1,22 @@
+
+
+.google-pop-out-container{
+    border: 1px solid rgba(128, 128, 128, 0.249);
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    column-gap: 30px;
+    padding: 7px;
+    cursor: pointer;
+}
+
+// Google popout Button
+.google-pop-out-button{
+    background-color: transparent;
+    border: none;
+    font-weight: 500px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+

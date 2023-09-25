@@ -8,6 +8,8 @@ import { RootReducer } from '../../interfaces/reducersInterface';
 import { decrementItemFromCart, incrementItemFromCart, removeItemFromCart } from '../../reducers/productsSlice';
 import { Product, ProductCart } from '../../interfaces/productSliceInterface';
 import { EmptyCart } from '../../components/cart/EmptyCart';
+import axios from 'axios';
+import getStripe from '../../lib/stripe';
 
 
 export const Cart = () => {
@@ -30,10 +32,18 @@ export const Cart = () => {
   const incrementProductQuantity = (product: ProductCart) => {
     dispatch(incrementItemFromCart(product))
   };
-
+  // Decrement Product
   const decrementProduct = (product: ProductCart) => {
     dispatch(decrementItemFromCart(product))
   };
+
+  // Handle Checkout Function
+  const handleCheckout =  async () => {
+
+    const stripe = await getStripe();
+    const data = await axios.post('http://localhost:4000/checkout', cart);
+
+  }
 
   if(cart.length === 0){
     return <EmptyCart />
@@ -106,7 +116,7 @@ export const Cart = () => {
               <span>Total</span>
               <span>${total.toFixed(2)}</span>
             </div>
-            <button className="cart-products-checkout-info-button">
+            <button className="cart-products-checkout-info-button" onClick={handleCheckout}>
               Checkout
             </button>
           </div>
