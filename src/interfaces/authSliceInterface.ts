@@ -1,5 +1,5 @@
 
 
-interface authSliceInterface {
+export interface authSliceInterface {
     user: boolean;
 }
