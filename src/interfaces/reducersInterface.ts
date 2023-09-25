@@ -1,3 +1,4 @@
+import { authSliceInterface } from "./authSliceInterface";
 import { ProductsSliceInterface } from "./productSliceInterface";
 
 
