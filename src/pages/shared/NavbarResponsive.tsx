@@ -7,7 +7,8 @@ import { BsBag } from 'react-icons/bs';
 import { RootReducer } from '../../interfaces/reducersInterface';
 import { AppDispatch } from '../../store/store';
 import { getAllProducts } from '../../reducers/productsSlice';
-
+import TShirt from '../../../public/tshirt.jpg'; 
+import Bag from '../../../public/bag.jpg'; 
 
 export const NavbarResponsive = () => {
 
@@ -34,16 +35,16 @@ export const NavbarResponsive = () => {
         <ul className={ isClosed ? "navbar-responsive-links active" : "navbar-responsive-links" }>
             <div className="navbar-responsive-to-redirect">
                 <img 
-                    src={allProducts[0].image} 
-                    alt=""
+                    src={TShirt} 
+                    alt="image"
                     style={{width: "14px"}}
                 />
                 <span> Best Sellers </span>
             </div>
             <div className="navbar-responsive-to-redirect">
                 <img 
-                    src={allProducts[1].image}  
-                    alt=""
+                    src={Bag}  
+                    alt="image"
                     style={{width: "14px"}}
                 />
                 <span> All Products </span>
