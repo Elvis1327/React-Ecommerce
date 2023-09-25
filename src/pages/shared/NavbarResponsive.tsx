@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { AiOutlineMenu, AiOutlineUser, AiOutlineClose } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BsBag } from 'react-icons/bs';
 
 import { RootReducer } from '../../interfaces/reducersInterface';
@@ -13,15 +13,11 @@ import Bag from '../../assets/bag.jpg';
 export const NavbarResponsive = () => {
 
     const dispatch = useDispatch<AppDispatch>();
-
-    useEffect(() => {
-        dispatch(getAllProducts());
-    },[])
+    const navigate = useNavigate();
 
     const [ isClosed, setIsClosed ] = useState(false);
 
     const { user } = useSelector((state: RootReducer) => state.auth);
-    const { allProducts } = useSelector((state: RootReducer) => state.products);
 
     const handleMenu = () => {
         setIsClosed(!isClosed);
@@ -30,10 +26,10 @@ export const NavbarResponsive = () => {
   return (
     <div className="navbar-responsive-menu">
         <button className="menu-button" onClick={handleMenu}>
-            { isClosed ? <AiOutlineClose /> : <AiOutlineMenu /> }
+            { isClosed ? <AiOutlineClose style={{ background: "white", color: "black" }} /> : <AiOutlineMenu style={{ background: "white", color: "black" }} /> }
         </button>
         <ul className={ isClosed ? "navbar-responsive-links active" : "navbar-responsive-links" }>
-            <div className="navbar-responsive-to-redirect">
+            <div className="navbar-responsive-to-redirect" onClick={() => navigate('/')}>
                 <img 
                     src={TShirt} 
                     alt="image"
@@ -41,7 +37,7 @@ export const NavbarResponsive = () => {
                 />
                 <span> Best Sellers </span>
             </div>
-            <div className="navbar-responsive-to-redirect">
+            <div className="navbar-responsive-to-redirect" onClick={() => navigate('/best-selling')}>
                 <img 
                     src={Bag}  
                     alt="image"
@@ -56,11 +52,11 @@ export const NavbarResponsive = () => {
         <div className="navbar-responsive-user-cart">
             { user !== true &&
                 <Link to='/signin'>
-                    <AiOutlineUser style={{fontSize: "22px"}} />
+                    <AiOutlineUser style={{fontSize: "22px", color: "black"}} />
                 </Link>
             }
             <Link to="/cart">
-                <BsBag style={{fontSize: "22px"}} />
+                <BsBag style={{fontSize: "22px", color: "black"}} />
             </Link>
         </div>
     </div>

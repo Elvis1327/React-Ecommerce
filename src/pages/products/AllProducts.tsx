@@ -6,6 +6,7 @@ import { getAllProducts } from '../../reducers/productsSlice';
 import { RootReducer } from '../../interfaces/reducersInterface';
 import { Product } from '../../interfaces/productSliceInterface';
 import { AllProductsCards } from '../../components/products/AllProductsCards';
+import BestSellersBanner from '../../assets/shop-banner.jpg';
 
 export const AllProducts = () => {
 
@@ -20,7 +21,9 @@ export const AllProducts = () => {
 
     return(
         <div className="all-products-main-container">
-            <div className="all-products-main-container-banner">
+            <div className="all-products-main-container-banner"
+                style={{backgroundImage: `url(${BestSellersBanner})`}}
+                >
                 <h1 className="all-products-main-container-banner-h1">
                     BEST SELLING
                 </h1>

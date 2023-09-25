@@ -16,7 +16,7 @@ export const ProductsById = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch<AppDispatch>();
-  const { productById, productByIdLoading, cart } = useSelector((state: RootReducer)=> state.products);
+  const { productById, productByIdLoading } = useSelector((state: RootReducer)=> state.products);
 
   // Get product by ID
   const { id } = useParams();
@@ -26,12 +26,11 @@ export const ProductsById = () => {
 
   // Add product to cart
   const getProductToCart = (productById: any) => {
-
     dispatch(addProductToCart(productById));
     // Toast to alert user 
     toast.success('The Product has been added to the Cart', {
       position: toast.POSITION.BOTTOM_RIGHT,
-      autoClose: 1000
+      autoClose: 800
     });
     navigate('/cart');
   };

@@ -10,6 +10,7 @@ import { Product, ProductCart } from '../../interfaces/productSliceInterface';
 import { EmptyCart } from '../../components/cart/EmptyCart';
 import axios from 'axios';
 import getStripe from '../../lib/stripe';
+import { ResponsiveCheckout } from '../../components/cart/ResponsiveCheckout';
 
 
 export const Cart = () => {
@@ -101,6 +102,8 @@ export const Cart = () => {
 
         ))}
       </article>
+
+      <ResponsiveCheckout total={total} cart={cart} />
       <article className="cart-products-checkout-container">
           <h1 className='cart-products-checkout-container-h1'>Order Sumary</h1>
           <div className="cart-products-checkout-info">
