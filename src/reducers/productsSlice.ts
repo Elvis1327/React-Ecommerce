@@ -93,7 +93,6 @@ const productsSlice = createSlice({
         }
     },
 
-
     extraReducers: (builder) => {
         // Get All Products
         builder.addCase(getAllProducts.fulfilled, (state, action) => {

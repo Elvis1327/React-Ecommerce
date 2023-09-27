@@ -9,7 +9,7 @@ import { decrementItemFromCart, incrementItemFromCart, removeItemFromCart } from
 import { Product, ProductCart } from '../../interfaces/productSliceInterface';
 import { EmptyCart } from '../../components/cart/EmptyCart';
 import axios from 'axios';
-import getStripe from '../../lib/stripe';
+
 import { ResponsiveCheckout } from '../../components/cart/ResponsiveCheckout';
 
 
@@ -41,8 +41,10 @@ export const Cart = () => {
   // Handle Checkout Function
   const handleCheckout =  async () => {
 
-    const stripe = await getStripe();
-    const data = await axios.post('http://localhost:4000/checkout', cart);
+    const data = await axios.post('https://node-backend-practice.onrender.com/stripe/checkout', cart);
+    if(data){
+      window.location.href = data.data;
+    }
 
   }
 
@@ -89,7 +91,7 @@ export const Cart = () => {
                   </button>
                 </div>
                 <span className="cart-products-info-card-quantity-total">
-                  <strong>${product.productQuantity * product.productPrice}</strong>
+                  <strong>${(product.productQuantity * product.productPrice).toFixed(2)}</strong>
                 </span>
               </article>
             </div>

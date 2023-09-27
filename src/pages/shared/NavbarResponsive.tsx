@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { AiOutlineMenu, AiOutlineUser, AiOutlineClose } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { BsBag } from 'react-icons/bs';
+import { signOut } from 'firebase/auth';
 
+import { auth } from '../../firebase/config';
 import { RootReducer } from '../../interfaces/reducersInterface';
 import { AppDispatch } from '../../store/store';
 import { getAllProducts } from '../../reducers/productsSlice';
@@ -12,7 +14,6 @@ import Bag from '../../assets/bag.jpg';
 
 export const NavbarResponsive = () => {
 
-    const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
 
     const [ isClosed, setIsClosed ] = useState(false);
@@ -22,6 +23,11 @@ export const NavbarResponsive = () => {
     const handleMenu = () => {
         setIsClosed(!isClosed);
     };
+
+    const handleLogOut = async () => {
+        const userLogOut = await signOut(auth);
+        navigate('/signin')
+    }
 
   return (
     <div className="navbar-responsive-menu">
@@ -50,10 +56,12 @@ export const NavbarResponsive = () => {
             PrimePicks
         </Link>
         <div className="navbar-responsive-user-cart">
-            { user !== true &&
+            { user !== true ?
                 <Link to='/signin'>
                     <AiOutlineUser style={{fontSize: "22px", color: "black"}} />
                 </Link>
+                :
+                <button className="isUserInButton" onClick={handleLogOut}>Logout</button>
             }
             <Link to="/cart">
                 <BsBag style={{fontSize: "22px", color: "black"}} />
@@ -62,3 +70,17 @@ export const NavbarResponsive = () => {
     </div>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

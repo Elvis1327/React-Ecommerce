@@ -56,3 +56,32 @@
     cursor: pointer;
 }
 
+@media screen and (max-width:800px){
+    .one-product-main-container-container h1{
+        font-size: 24px;
+        letter-spacing: 1px;
+    }
+
+    .one-product-main-container-container span{
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+
+    .one-product-main-container-container{
+        width: 100%;
+        padding: 0px 40px;
+    }
+
+    .one-product-main-container-container button{
+        padding: 15px;
+        width: 100%;
+        background-color: transparent;
+        border: 2px solid white;
+        color: white;
+        font-weight: bold;
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+}
+

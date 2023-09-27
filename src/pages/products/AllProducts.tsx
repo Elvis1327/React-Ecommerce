@@ -17,7 +17,6 @@ export const AllProducts = () => {
     },[]);
 
     const { allProducts } = useSelector((state: RootReducer) => state.products);
-    console.log(allProducts)
 
     return(
         <div className="all-products-main-container">

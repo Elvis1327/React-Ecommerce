@@ -8,7 +8,7 @@ export const BestSellingProductsCards = ({title, image, price, id}: Product) => 
 
   const navigate = useNavigate();
 
-  let newString = truncateString(title!);
+  let newTitle = truncateString(title);
 
   const handleNavigation = () => {
     navigate(`/product/${id}`)
@@ -22,7 +22,7 @@ export const BestSellingProductsCards = ({title, image, price, id}: Product) => 
         alt="pruduct-image" 
         className="best-seller-product-cards-img" />
       <h2 className="best-seller-product-cards-title">
-          {newString}
+          {newTitle}
       </h2>
       <div className="best-seller-product-cards-price">
         ${price}

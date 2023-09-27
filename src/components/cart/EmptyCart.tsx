@@ -9,7 +9,7 @@ export const EmptyCart = () => {
 
     const goToShopping = () => {
         navigate('/best-selling')
-    }
+    };
         
     return (
         <div className="empty-cart-main-container">
