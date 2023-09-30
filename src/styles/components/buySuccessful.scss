@@ -1,0 +1,44 @@
+// Main container
+.buysuccessful-main-container{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 50px 0px;
+    gap: 20px;
+}
+// Img
+.buysuccessful-img{
+    width: 350px;
+    border-radius: 20px;
+    max-width: 100%;
+}
+
+// H1 Title
+.buysuccessful-title{
+    font-family: 'Poppins', sans-serif;
+    font-size: 35px;
+}
+// PrimePicks
+.buysuccessful-title strong{
+   color: #455076;
+}
+
+// Button Return Shopping
+.buysuccessful-return-shopping-button{
+    padding: 9px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
+    border: none;
+    background-color: #3B6DB4;
+    color: white;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+    .buysuccessful-title{
+        font-size: 20px;
+    }
+}

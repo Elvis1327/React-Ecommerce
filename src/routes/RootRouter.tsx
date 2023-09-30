@@ -16,9 +16,7 @@ import { userIsActive } from '../reducers/authSlice';
 import { PrivateRoutes } from './PrivateRoutes';
 import { AllProducts } from '../pages/products/AllProducts';
 import { ProductsById } from '../pages/products/ProductsById';
-
-
-
+import { BuySuccessful } from '../components/cart/BuySuccessful';
 
 export const RootRouter = () => {
 
@@ -47,6 +45,7 @@ export const RootRouter = () => {
                 <Route path='/signup' element={<SignUp />} />
                 <Route path='/best-selling' element={<AllProducts />} />
                 <Route path='/product/:id' element={<ProductsById />} />
+                <Route path='/successful' element={<BuySuccessful />} />
             </Routes>
             <ToastContainer />
         </BrowserRouter>
