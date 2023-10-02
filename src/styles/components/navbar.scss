@@ -8,7 +8,7 @@
     justify-content: space-around;
 }
 
-// Navbar container h1 
+// H1 title Prime Picks
 .navbar-main-container-h1-tittle{
     font-size: 25px;
     cursor: pointer;
@@ -19,9 +19,8 @@
     font-weight: bold;
 }
 
-// Navbar info links
+// Navbar Info Links Container
 .navbar-main-container-info-links{
-    // width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,6 +33,7 @@
     text-decoration: none;
     font-weight: 500;
     font-size: 18px;
+    color: black;
 }
 
 // Cart Navigation

@@ -1,14 +1,12 @@
-import React, { ChangeEvent, useState } from 'react';
+import React from 'react';
 import { BsArrowRightShort } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { auth } from '../../firebase/config';
-
-import googleImage from '../../../public/googlepng.png';
 import { GooglePopOut } from '../../components/auth/GooglePopOut';
 
 const formSchema = z
@@ -28,9 +26,11 @@ type SignUpSchemaType = z.infer<typeof formSchema>;
 export const SignUp = () => {
 
     const navigate = useNavigate();
-    // Handle Form
-    const { register, handleSubmit, formState: {errors} } = useForm<SignUpSchemaType>({resolver: zodResolver(formSchema)});
 
+    // (React Hook Form) Hook to handle Form
+    const { register, handleSubmit, formState: {errors} } = useForm<SignUpSchemaType>({resolver: zodResolver(formSchema)});
+    
+    // Handle Form
     const onSubmit: SubmitHandler<SignUpSchemaType> = async (data) => {
         const user = await createUserWithEmailAndPassword(auth, data.email, data.password)
         if(user){
@@ -90,8 +90,8 @@ export const SignUp = () => {
                             </span>
                         </div>
                     </div>
-                    <GooglePopOut />
                 </form>
+                <GooglePopOut />
             </div>
         </div>
     )

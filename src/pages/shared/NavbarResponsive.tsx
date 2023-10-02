@@ -26,7 +26,7 @@ export const NavbarResponsive = () => {
 
     const handleLogOut = async () => {
         const userLogOut = await signOut(auth);
-        navigate('/signin')
+        navigate('/signin');
     }
 
   return (

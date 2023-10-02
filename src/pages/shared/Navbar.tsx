@@ -38,14 +38,14 @@ export const Navbar = () => {
                         <button className="isUserInButton" onClick={handleLogOUt}>Logout</button>
                         :
                         <div className="navbar-main-container-user-container">
-                            <Link to='/signin'>
+                            <Link to='/signin' style={{color: "black"}}>
                                 <AiOutlineUser style={{fontSize: "22px"}} />
                             </Link>
                         </div>
                     }
 
                     <div className="navbar-main-container-cart-container">
-                        <Link to="/cart">
+                        <Link to="/cart" style={{color: "black"}}>
                             <BsBag style={{fontSize: "22px"}} />
                         </Link>
                     </div>

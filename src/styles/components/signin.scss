@@ -12,6 +12,10 @@
 .signin-card-login{
     width: 400px;
     padding: 25px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 // Form h1

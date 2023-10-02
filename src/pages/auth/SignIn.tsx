@@ -1,5 +1,5 @@
 import React from 'react';
-import { signInWithEmailAndPassword} from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { BsArrowRightShort } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -24,17 +24,17 @@ const formSchema = z
 type SignUpSchemaType = z.infer<typeof formSchema>;
 
 export const SignIn = () => {
-
+    
     const navigate = useNavigate();
 
+    // (React hook form) hook to handle form 
     const { register, handleSubmit, formState: {errors} } = useForm<SignUpSchemaType>({resolver: zodResolver(formSchema)});
 
     // handle Form
     const onSubmit:SubmitHandler<SignUpSchemaType> = async (data) => {
         const user = await signInWithEmailAndPassword(auth, data.email, data.password);
-        navigate('/best-selling')
-    
-    }
+        navigate('/best-selling');
+    };
 
     return(
         <div className="signin-main-container">
@@ -65,8 +65,7 @@ export const SignIn = () => {
                         {/* Error Message */}
                         {errors.password && 
                             <span className='signin-card-form-input-error'>{errors.password.message}</span> 
-                        }
-                        
+                        } 
                     </div>
                     <div className="signin-card-form-ways">
                         <button className="signin-card-form-button">
@@ -79,8 +78,8 @@ export const SignIn = () => {
                             </span>
                         </div>
                     </div>
-                    <GooglePopOut />
                 </form>
+                <GooglePopOut />
             </div>
         </div>
     )
