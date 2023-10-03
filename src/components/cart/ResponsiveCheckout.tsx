@@ -9,12 +9,15 @@ export const ResponsiveCheckout = ({ total, cart }: any) => {
         if(data){
             window.location.href = data.data
         };
-
     };
+
+    const clearLocalStorage = () => {
+        localStorage.clear()
+    }
 
   return (
     <div className='responsive-checkout-main-container'>
-        <button className="responsive-checkout-button-clear">
+        <button className="responsive-checkout-button-clear" onClick={clearLocalStorage}>
             Clear Cart
         </button>
         <div className="responsive-checkout-total-button">

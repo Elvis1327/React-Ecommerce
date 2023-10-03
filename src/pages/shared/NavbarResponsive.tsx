@@ -16,26 +16,37 @@ export const NavbarResponsive = () => {
 
     const navigate = useNavigate();
 
-    const [ isClosed, setIsClosed ] = useState(false);
+    const [ isOpen, setIsOpen ] = useState(false);
 
     const { user } = useSelector((state: RootReducer) => state.auth);
 
     const handleMenu = () => {
-        setIsClosed(!isClosed);
+        setIsOpen(!isOpen);
     };
 
     const handleLogOut = async () => {
         const userLogOut = await signOut(auth);
         navigate('/signin');
+    };
+
+    const redirectToHome = () => {
+        setIsOpen(false);
+        navigate('/')
+    };
+
+    const redirectToBestSellers = () => {
+        setIsOpen(false)
+        navigate('/best-selling')
     }
+
 
   return (
     <div className="navbar-responsive-menu">
         <button className="menu-button" onClick={handleMenu}>
-            { isClosed ? <AiOutlineClose style={{ background: "white", color: "black" }} /> : <AiOutlineMenu style={{ background: "white", color: "black" }} /> }
+            { isOpen ? <AiOutlineClose style={{ background: "white", color: "black" }} /> : <AiOutlineMenu style={{ background: "white", color: "black" }} /> }
         </button>
-        <ul className={ isClosed ? "navbar-responsive-links active" : "navbar-responsive-links" }>
-            <div className="navbar-responsive-to-redirect" onClick={() => navigate('/')}>
+        <ul className={ isOpen ? "navbar-responsive-links active" : "navbar-responsive-links" }>
+            <div className="navbar-responsive-to-redirect" onClick={redirectToHome}>
                 <img 
                     src={TShirt} 
                     alt="image"
@@ -43,7 +54,7 @@ export const NavbarResponsive = () => {
                 />
                 <span> Best Sellers </span>
             </div>
-            <div className="navbar-responsive-to-redirect" onClick={() => navigate('/best-selling')}>
+            <div className="navbar-responsive-to-redirect" onClick={redirectToBestSellers}>
                 <img 
                     src={Bag}  
                     alt="image"

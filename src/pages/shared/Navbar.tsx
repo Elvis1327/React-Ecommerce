@@ -30,7 +30,13 @@ export const Navbar = () => {
                 <div className="navbar-main-container-info-links">
                     <Link className='navbar-main-container-info-navigation' to="/">Home</Link>
                     <Link className='navbar-main-container-info-navigation' to="/best-selling">Shop</Link>
-                    <Link className='navbar-main-container-info-navigation' to="/home">Contact</Link>
+                    <a 
+                        className='navbar-main-container-info-navigation'
+                        target='_blank'
+                        href='https://elvingarcias.com'
+                    >
+                        Contact
+                    </a>
                 </div>
                 <div className="navbar-main-container-user-cart">
                     {user 
