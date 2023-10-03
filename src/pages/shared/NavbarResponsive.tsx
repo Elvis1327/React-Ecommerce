@@ -56,12 +56,12 @@ export const NavbarResponsive = () => {
             PrimePicks
         </Link>
         <div className="navbar-responsive-user-cart">
-            { user !== true ?
+            { user ?
+                <button className="isUserInButton" onClick={handleLogOut}>Logout</button>
+                :
                 <Link to='/signin'>
                     <AiOutlineUser style={{fontSize: "22px", color: "black"}} />
                 </Link>
-                :
-                <button className="isUserInButton" onClick={handleLogOut}>Logout</button>
             }
             <Link to="/cart">
                 <BsBag style={{fontSize: "22px", color: "black"}} />

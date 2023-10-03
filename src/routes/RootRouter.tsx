@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 
 import { Navbar } from '../pages/shared/Navbar';
@@ -17,11 +17,12 @@ import { PrivateRoutes } from './PrivateRoutes';
 import { AllProducts } from '../pages/products/AllProducts';
 import { ProductsById } from '../pages/products/ProductsById';
 import { BuySuccessful } from '../components/cart/BuySuccessful';
+import { RootReducer } from '../interfaces/reducersInterface';
 
 export const RootRouter = () => {
 
     const dispatch = useDispatch<AppDispatch>();
-
+     
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if(user){

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BsArrowRightShort } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getRedirectResult } from 'firebase/auth';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -26,6 +26,16 @@ type SignUpSchemaType = z.infer<typeof formSchema>;
 export const SignUp = () => {
 
     const navigate = useNavigate();
+    
+    useEffect(() => {
+        const getUserResultWithGoogle = async () => {
+          const response = await getRedirectResult(auth);
+          if(response){
+            navigate('/')
+          };
+        };
+        getUserResultWithGoogle();
+      },[]);
 
     // (React Hook Form) Hook to handle Form
     const { register, handleSubmit, formState: {errors} } = useForm<SignUpSchemaType>({resolver: zodResolver(formSchema)});

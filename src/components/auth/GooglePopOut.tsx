@@ -1,33 +1,23 @@
-import React, { useEffect } from 'react';
-import { GoogleAuthProvider, getRedirectResult, onAuthStateChanged, signInWithRedirect,  } from 'firebase/auth';
+import React from 'react';
+import { GoogleAuthProvider, signInWithRedirect } from 'firebase/auth';
 
 import { auth } from '../../firebase/config';
 import googleImage from '../../assets/googlepng.png';
-import { useNavigate } from 'react-router-dom';
 
+// Component
 export const GooglePopOut = () => {
 
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-        if(user){
-            navigate('/');
-        }
-    })
-}, []);
 
   const handleRedirectGoogleAuth = async () => {
-    const googleProvider = new GoogleAuthProvider();
     try {
-
+      
+      const googleProvider = new GoogleAuthProvider();
       const user = await signInWithRedirect(auth, googleProvider);
-      const result = await getRedirectResult(auth);
-
+      
     } catch (error) {
-      console.log(error);
+      alert('Something happen with the server');
     }
-    
   }
 
   return (
@@ -35,7 +25,7 @@ export const GooglePopOut = () => {
         <img 
             src={googleImage} 
             alt="googleImage"
-            style={{width: "20px"}}
+            style={{width: "20px", backgroundColor: "white"}}
         />
         <button className="google-pop-out-button">
             Sign In With Google

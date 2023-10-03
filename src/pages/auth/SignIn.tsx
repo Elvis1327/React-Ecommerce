@@ -1,16 +1,17 @@
-import React from 'react';
-import { signInWithEmailAndPassword } from "firebase/auth";
+import React, { useEffect } from 'react';
+import { getRedirectResult, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { BsArrowRightShort } from 'react-icons/bs';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, redirect, useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { auth } from '../../firebase/config';
 import { GooglePopOut } from '../../components/auth/GooglePopOut';
+import { useSelector } from 'react-redux';
+import { RootReducer } from '../../interfaces/reducersInterface';
 
-
-
+// Schema for form
 const formSchema = z
 .object({
     email: z.string().min(1, 'Email is required')
@@ -23,8 +24,19 @@ const formSchema = z
 });
 type SignUpSchemaType = z.infer<typeof formSchema>;
 
+// Component
 export const SignIn = () => {
-    
+
+    useEffect(() => {
+        const getUserResultWithGoogle = async () => {
+          const response = await getRedirectResult(auth);
+          if(response){
+            navigate('/')
+          };
+        };
+        getUserResultWithGoogle();
+      },[]);
+
     const navigate = useNavigate();
 
     // (React hook form) hook to handle form 
