@@ -1,7 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import HatBanner from '../../assets/hatbanner.jpg';
 
 export const OneProduct = () => {
+
+  const navigate = useNavigate()
+
   return (
     <div className="one-product-main-container-img-banner"
       style={{backgroundImage: `url(${HatBanner})`}}
@@ -9,7 +14,7 @@ export const OneProduct = () => {
         <div className="one-product-main-container-container">
             <h1>Best Products Best Prices</h1>
             <span>Find Everything Here</span>
-            <button>Shop Now</button>
+            <button onClick={() => navigate('best-selling')}>Shop Now</button>
         </div>
     </div>
   )

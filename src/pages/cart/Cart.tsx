@@ -46,6 +46,8 @@ export const Cart = () => {
       window.location.href = data.data;
     }
 
+
+
   }
 
   if(cart.length === 0){
